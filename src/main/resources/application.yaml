@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: coindesk-demo
+  profiles:
+    active:
+      - dev
+
