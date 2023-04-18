@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.11-SNAPSHOT</version>
+		<version>2.5.12</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.wits</groupId>
@@ -25,6 +25,44 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-hateoas -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-hateoas</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.openapitools/jackson-databind-nullable -->
+		<dependency>
+			<groupId>org.openapitools</groupId>
+			<artifactId>jackson-databind-nullable</artifactId>
+			<version>0.2.4</version>
 		</dependency>
 
 		<dependency>
@@ -73,7 +111,7 @@
 				<groupId>org.openapitools</groupId>
 				<artifactId>openapi-generator-maven-plugin</artifactId>
 				<!-- RELEASE_VERSION -->
-				<version>6.3.0</version>
+				<version>6.0.0</version>
 				<!-- /RELEASE_VERSION -->
 				<executions>
 					<execution>
@@ -81,10 +119,35 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
+							<generatorName>spring</generatorName>
+							<library>spring-boot</library>
 							<inputSpec>${project.basedir}/spec/openapi.yaml</inputSpec>
-							<generatorName>java</generatorName>
+							<output>${project.basedir}/generated</output>
+							<apiPackage>org.wits.coindesk.controller.interfaces.generated</apiPackage>
+							<modelPackage>org.wits.coindesk.model.dto.generated</modelPackage>
+							<invokerPackage>org.wits</invokerPackage>
+							<typeMappings>
+								<typeMapping>set=List</typeMapping>
+							</typeMappings>
+							<instantiationTypes>
+								<instantiationType>set=List</instantiationType>
+							</instantiationTypes>
+							<importMappings>
+								<importMapping>LinkedHashSet=java.util.ArrayList</importMapping>
+							</importMappings>
 							<configOptions>
-								<sourceFolder>generated</sourceFolder>
+								<dateLibrary>java8</dateLibrary>
+								<openApiNullable>false</openApiNullable>
+								<disallowAdditionalPropertiesIfNotPresent>false</disallowAdditionalPropertiesIfNotPresent>
+								<groupId>org.wits</groupId>
+								<interfaceOnly>true</interfaceOnly>
+								<licenseName>Unlicensed</licenseName>
+								<singleContentTypes>true</singleContentTypes>
+								<title>coindesk-demo</title>
+								<unhandledException>true</unhandledException>
+								<useTags>true</useTags>
+								<useOptional>true</useOptional>
+								<skipOverwrite>true</skipOverwrite>
 							</configOptions>
 						</configuration>
 					</execution>

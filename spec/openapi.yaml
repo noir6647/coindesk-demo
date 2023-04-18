@@ -1,0 +1,307 @@
+openapi: 3.0.0
+info:
+  title: openapi
+  version: '1.0'
+  description: coindesk API
+  contact:
+    name: Steven
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /coindesk:
+    get:
+      summary: CALL COINDESK API
+      tags:
+        - COINDESK
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoindeskResponseDTO'
+              examples: {}
+      operationId: get-coindesk
+      description: call coindesk api
+  /bpi:
+    get:
+      summary: QUERY BPI
+      tags:
+        - BPI
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BpiResponseDTO'
+              examples: {}
+      operationId: get-bpi
+      description: call coindesk api and format data
+  /currency:
+    get:
+      summary: QUERY CURRENCY
+      tags:
+        - CURRENCY
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrencyQueryResponseDTO'
+      operationId: get-currency
+      description: query currency
+    post:
+      summary: ADD CURRENCY
+      operationId: post-currency
+      responses:
+        '200':
+          description: OK
+      description: add curreny
+      tags:
+        - CURRENCY
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CurrencyCreateRequestDTO'
+            examples:
+              example-1:
+                value:
+                  code: JPY
+                  nameCht: 日幣
+    parameters: []
+  '/currency/{code}':
+    parameters:
+      - schema:
+          type: string
+        name: code
+        in: path
+        required: true
+    patch:
+      summary: UPDATE CURRENCY
+      operationId: patch-currency-code
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrencyDTO'
+      description: update currency
+      tags:
+        - CURRENCY
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CurrencyUpdateRequestDTO'
+            examples:
+              example-1:
+                value:
+                  nameCht: string
+    delete:
+      summary: DELETE CURRENCY
+      operationId: delete-currency-code
+      responses:
+        '200':
+          description: OK
+      description: delete currency
+      tags:
+        - CURRENCY
+components:
+  schemas:
+    BpiResponseDTO:
+      title: BpiResponseDTO
+      type: array
+      items:
+        $ref: '#/components/schemas/BpiDTO'
+    BpiDTO:
+      title: BpiDTO
+      type: object
+      properties:
+        oid:
+          type: string
+        code:
+          type: string
+        symbol:
+          type: string
+        rate:
+          type: string
+        description:
+          type: string
+        updatedTimestamp:
+          type: string
+    CoindeskResponseDTO:
+      description: ''
+      type: object
+      properties:
+        time:
+          type: object
+          properties:
+            updated:
+              type: string
+              minLength: 1
+            updatedISO:
+              type: string
+              minLength: 1
+            updateduk:
+              type: string
+              minLength: 1
+          required:
+            - updated
+            - updatedISO
+            - updateduk
+        disclaimer:
+          type: string
+          minLength: 1
+        chartName:
+          type: string
+          minLength: 1
+        bpi:
+          type: object
+          properties:
+            USD:
+              type: object
+              properties:
+                code:
+                  type: string
+                  minLength: 1
+                symbol:
+                  type: string
+                  minLength: 1
+                rate:
+                  type: string
+                  minLength: 1
+                description:
+                  type: string
+                  minLength: 1
+                rate_float:
+                  type: number
+              required:
+                - code
+                - symbol
+                - rate
+                - description
+                - rate_float
+            GBP:
+              type: object
+              properties:
+                code:
+                  type: string
+                  minLength: 1
+                symbol:
+                  type: string
+                  minLength: 1
+                rate:
+                  type: string
+                  minLength: 1
+                description:
+                  type: string
+                  minLength: 1
+                rate_float:
+                  type: number
+              required:
+                - code
+                - symbol
+                - rate
+                - description
+                - rate_float
+            EUR:
+              type: object
+              properties:
+                code:
+                  type: string
+                  minLength: 1
+                symbol:
+                  type: string
+                  minLength: 1
+                rate:
+                  type: string
+                  minLength: 1
+                description:
+                  type: string
+                  minLength: 1
+                rate_float:
+                  type: number
+              required:
+                - code
+                - symbol
+                - rate
+                - description
+                - rate_float
+          required:
+            - USD
+            - GBP
+            - EUR
+      required:
+        - time
+        - disclaimer
+        - chartName
+        - bpi
+      x-examples:
+        example-1:
+          time:
+            updated: 'Apr 17, 2023 03:27:00 UTC'
+            updatedISO: '2023-04-17T03:27:00+00:00'
+            updateduk: 'Apr 17, 2023 at 04:27 BST'
+          disclaimer: This data was produced from the CoinDesk Bitcoin Price Index (USD). Non-USD currency data converted using hourly conversion rate from openexchangerates.org
+          chartName: Bitcoin
+          bpi:
+            USD:
+              code: USD
+              symbol: '&#36;'
+              rate: '30,031.1117'
+              description: United States Dollar
+              rate_float: 30031.1117
+            GBP:
+              code: GBP
+              symbol: '&pound;'
+              rate: '25,093.7567'
+              description: British Pound Sterling
+              rate_float: 25093.7567
+            EUR:
+              code: EUR
+              symbol: '&euro;'
+              rate: '29,254.6873'
+              description: Euro
+              rate_float: 29254.6873
+      title: CoindeskResponseDTO
+    CurrencyQueryResponseDTO:
+      title: CurrencyQueryResponseDTO
+      type: array
+      items:
+        $ref: '#/components/schemas/CurrencyDTO'
+    CurrencyDTO:
+      title: CurrencyDTO
+      type: object
+      properties:
+        oid:
+          type: integer
+        code:
+          type: string
+        nameCht:
+          type: string
+        createdTimestamp:
+          type: number
+        updatedTimestamp:
+          type: number
+    CurrencyCreateRequestDTO:
+      title: CurrencyCreateRequestDTO
+      type: object
+      properties:
+        code:
+          type: string
+        nameCht:
+          type: string
+    CurrencyUpdateRequestDTO:
+      title: CurrencyUpdateRequestDTO
+      type: object
+      properties:
+        nameCht:
+          type: string
+tags:
+  - name: BPI
+  - name: COINDESK
+  - name: CURRENCY
