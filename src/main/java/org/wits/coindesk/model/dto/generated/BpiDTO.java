@@ -1,26 +1,23 @@
 package org.wits.coindesk.model.dto.generated;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
  * BpiDTO
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-17T17:16:47.756762500+08:00[Asia/Taipei]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-18T14:32:31.098910400+08:00[Asia/Taipei]")
 public class BpiDTO {
-
-  @JsonProperty("oid")
-  private String oid;
 
   @JsonProperty("code")
   private String code;
 
-  @JsonProperty("symbol")
-  private String symbol;
+  @JsonProperty("nameCht")
+  private String nameCht;
 
   @JsonProperty("rate")
   private String rate;
@@ -30,25 +27,6 @@ public class BpiDTO {
 
   @JsonProperty("updatedTimestamp")
   private String updatedTimestamp;
-
-  public BpiDTO oid(String oid) {
-    this.oid = oid;
-    return this;
-  }
-
-  /**
-   * Get oid
-   * @return oid
-  */
-  
-  @Schema(name = "oid", required = false)
-  public String getOid() {
-    return oid;
-  }
-
-  public void setOid(String oid) {
-    this.oid = oid;
-  }
 
   public BpiDTO code(String code) {
     this.code = code;
@@ -69,23 +47,23 @@ public class BpiDTO {
     this.code = code;
   }
 
-  public BpiDTO symbol(String symbol) {
-    this.symbol = symbol;
+  public BpiDTO nameCht(String nameCht) {
+    this.nameCht = nameCht;
     return this;
   }
 
   /**
-   * Get symbol
-   * @return symbol
+   * Get nameCht
+   * @return nameCht
   */
   
-  @Schema(name = "symbol", required = false)
-  public String getSymbol() {
-    return symbol;
+  @Schema(name = "nameCht", required = false)
+  public String getNameCht() {
+    return nameCht;
   }
 
-  public void setSymbol(String symbol) {
-    this.symbol = symbol;
+  public void setNameCht(String nameCht) {
+    this.nameCht = nameCht;
   }
 
   public BpiDTO rate(String rate) {
@@ -154,9 +132,8 @@ public class BpiDTO {
       return false;
     }
     BpiDTO bpiDTO = (BpiDTO) o;
-    return Objects.equals(this.oid, bpiDTO.oid) &&
-        Objects.equals(this.code, bpiDTO.code) &&
-        Objects.equals(this.symbol, bpiDTO.symbol) &&
+    return Objects.equals(this.code, bpiDTO.code) &&
+        Objects.equals(this.nameCht, bpiDTO.nameCht) &&
         Objects.equals(this.rate, bpiDTO.rate) &&
         Objects.equals(this.description, bpiDTO.description) &&
         Objects.equals(this.updatedTimestamp, bpiDTO.updatedTimestamp);
@@ -164,16 +141,15 @@ public class BpiDTO {
 
   @Override
   public int hashCode() {
-    return Objects.hash(oid, code, symbol, rate, description, updatedTimestamp);
+    return Objects.hash(code, nameCht, rate, description, updatedTimestamp);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BpiDTO {\n");
-    sb.append("    oid: ").append(toIndentedString(oid)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    symbol: ").append(toIndentedString(symbol)).append("\n");
+    sb.append("    nameCht: ").append(toIndentedString(nameCht)).append("\n");
     sb.append("    rate: ").append(toIndentedString(rate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");

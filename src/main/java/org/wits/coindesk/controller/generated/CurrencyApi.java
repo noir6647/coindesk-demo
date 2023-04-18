@@ -5,9 +5,6 @@
  */
 package org.wits.coindesk.controller.generated;
 
-import org.wits.coindesk.model.dto.generated.CurrencyCreateRequestDTO;
-import org.wits.coindesk.model.dto.generated.CurrencyDTO;
-import org.wits.coindesk.model.dto.generated.CurrencyUpdateRequestDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -18,15 +15,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.NativeWebRequest;
+import org.wits.coindesk.model.dto.generated.CurrencyCreateRequestDTO;
+import org.wits.coindesk.model.dto.generated.CurrencyDTO;
+import org.wits.coindesk.model.dto.generated.CurrencyUpdateRequestDTO;
 
+import javax.annotation.Generated;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-17T17:16:47.756762500+08:00[Asia/Taipei]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-18T13:39:49.521832300+08:00[Asia/Taipei]")
 @Validated
 @Tag(name = "Currency", description = "the Currency API")
 public interface CurrencyApi {
@@ -63,13 +66,52 @@ public interface CurrencyApi {
 
 
     /**
-     * GET /currency : QUERY CURRENCY
-     * query currency
+     * GET /currency/all : GET ALL CURRENCY
+     * get all currency
      *
      * @return OK (status code 200)
      */
     @Operation(
-        operationId = "getCurrency",
+        operationId = "getCurrencyAll",
+        summary = "GET ALL CURRENCY",
+        tags = { "CURRENCY" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "OK", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = CurrencyDTO.class))
+            })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = "/currency/all",
+        produces = "application/json"
+    )
+    default ResponseEntity<List<CurrencyDTO>> getCurrencyAll(
+        
+    ) throws Exception {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : \"code\", \"nameCht\" : \"nameCht\", \"createdTimestamp\" : 6, \"oid\" : 0, \"updatedTimestamp\" : 1 }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
+     * GET /currency/{code} : QUERY CURRENCY
+     * query currency
+     *
+     * @param code  (required)
+     * @return OK (status code 200)
+     */
+    @Operation(
+        operationId = "getCurrencyCode",
         summary = "QUERY CURRENCY",
         tags = { "CURRENCY" },
         responses = {
@@ -80,16 +122,16 @@ public interface CurrencyApi {
     )
     @RequestMapping(
         method = RequestMethod.GET,
-        value = "/currency",
+        value = "/currency/{code}",
         produces = "application/json"
     )
-    default ResponseEntity<List<CurrencyDTO>> getCurrency(
-        
+    default ResponseEntity<CurrencyDTO> getCurrencyCode(
+        @Parameter(name = "code", description = "", required = true) @PathVariable("code") String code
     ) throws Exception {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : \"code\", \"nameCht\" : \"nameCht\", \"createdTimestamp\" : 6.027456183070403, \"oid\" : 0, \"updatedTimestamp\" : 1.4658129805029452 }";
+                    String exampleString = "{ \"code\" : \"code\", \"nameCht\" : \"nameCht\", \"createdTimestamp\" : 6, \"oid\" : 0, \"updatedTimestamp\" : 1 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -131,7 +173,7 @@ public interface CurrencyApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : \"code\", \"nameCht\" : \"nameCht\", \"createdTimestamp\" : 6.027456183070403, \"oid\" : 0, \"updatedTimestamp\" : 1.4658129805029452 }";
+                    String exampleString = "{ \"code\" : \"code\", \"nameCht\" : \"nameCht\", \"createdTimestamp\" : 6, \"oid\" : 0, \"updatedTimestamp\" : 1 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

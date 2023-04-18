@@ -39,19 +39,6 @@ paths:
       operationId: get-bpi
       description: call coindesk api and format data
   /currency:
-    get:
-      summary: QUERY CURRENCY
-      tags:
-        - CURRENCY
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CurrencyQueryResponseDTO'
-      operationId: get-currency
-      description: query currency
     post:
       summary: ADD CURRENCY
       operationId: post-currency
@@ -110,6 +97,33 @@ paths:
       description: delete currency
       tags:
         - CURRENCY
+    get:
+      summary: QUERY CURRENCY
+      operationId: get-currency-code
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrencyDTO'
+      description: query currency
+      tags:
+        - CURRENCY
+  /currency/all:
+    get:
+      summary: GET ALL CURRENCY
+      tags:
+        - CURRENCY
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrencyGetAllResponseDTO'
+      operationId: get-currency-all
+      description: get all currency
 components:
   schemas:
     BpiResponseDTO:
@@ -121,11 +135,9 @@ components:
       title: BpiDTO
       type: object
       properties:
-        oid:
-          type: string
         code:
           type: string
-        symbol:
+        nameCht:
           type: string
         rate:
           type: string
@@ -268,8 +280,8 @@ components:
               description: Euro
               rate_float: 29254.6873
       title: CoindeskResponseDTO
-    CurrencyQueryResponseDTO:
-      title: CurrencyQueryResponseDTO
+    CurrencyGetAllResponseDTO:
+      title: CurrencyGetAllResponseDTO
       type: array
       items:
         $ref: '#/components/schemas/CurrencyDTO'
@@ -279,14 +291,17 @@ components:
       properties:
         oid:
           type: integer
+          format: int64
         code:
           type: string
         nameCht:
           type: string
         createdTimestamp:
-          type: number
+          type: integer
+          format: int64
         updatedTimestamp:
-          type: number
+          type: integer
+          format: int64
     CurrencyCreateRequestDTO:
       title: CurrencyCreateRequestDTO
       type: object

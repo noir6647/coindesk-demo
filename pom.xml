@@ -91,6 +91,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20230227</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -107,52 +114,52 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.openapitools</groupId>
-				<artifactId>openapi-generator-maven-plugin</artifactId>
-				<!-- RELEASE_VERSION -->
-				<version>6.0.0</version>
-				<!-- /RELEASE_VERSION -->
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<generatorName>spring</generatorName>
-							<library>spring-boot</library>
-							<inputSpec>${project.basedir}/spec/openapi.yaml</inputSpec>
-							<output>${project.basedir}/generated</output>
-							<apiPackage>org.wits.coindesk.controller.interfaces.generated</apiPackage>
-							<modelPackage>org.wits.coindesk.model.dto.generated</modelPackage>
-							<invokerPackage>org.wits</invokerPackage>
-							<typeMappings>
-								<typeMapping>set=List</typeMapping>
-							</typeMappings>
-							<instantiationTypes>
-								<instantiationType>set=List</instantiationType>
-							</instantiationTypes>
-							<importMappings>
-								<importMapping>LinkedHashSet=java.util.ArrayList</importMapping>
-							</importMappings>
-							<configOptions>
-								<dateLibrary>java8</dateLibrary>
-								<openApiNullable>false</openApiNullable>
-								<disallowAdditionalPropertiesIfNotPresent>false</disallowAdditionalPropertiesIfNotPresent>
-								<groupId>org.wits</groupId>
-								<interfaceOnly>true</interfaceOnly>
-								<licenseName>Unlicensed</licenseName>
-								<singleContentTypes>true</singleContentTypes>
-								<title>coindesk-demo</title>
-								<unhandledException>true</unhandledException>
-								<useTags>true</useTags>
-								<useOptional>true</useOptional>
-								<skipOverwrite>true</skipOverwrite>
-							</configOptions>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.openapitools</groupId>-->
+<!--				<artifactId>openapi-generator-maven-plugin</artifactId>-->
+<!--				&lt;!&ndash; RELEASE_VERSION &ndash;&gt;-->
+<!--				<version>6.0.0</version>-->
+<!--				&lt;!&ndash; /RELEASE_VERSION &ndash;&gt;-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<goals>-->
+<!--							<goal>generate</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<generatorName>spring</generatorName>-->
+<!--							<library>spring-boot</library>-->
+<!--							<inputSpec>${project.basedir}/spec/openapi.yaml</inputSpec>-->
+<!--							<output>${project.basedir}/generated</output>-->
+<!--							<apiPackage>org.wits.coindesk.controller.interfaces.generated</apiPackage>-->
+<!--							<modelPackage>org.wits.coindesk.model.dto.generated</modelPackage>-->
+<!--							<invokerPackage>org.wits</invokerPackage>-->
+<!--							<typeMappings>-->
+<!--								<typeMapping>set=List</typeMapping>-->
+<!--							</typeMappings>-->
+<!--							<instantiationTypes>-->
+<!--								<instantiationType>set=ArrayList</instantiationType>-->
+<!--							</instantiationTypes>-->
+<!--							<importMappings>-->
+<!--								<importMapping>LinkedHashSet=java.util.ArrayList</importMapping>-->
+<!--							</importMappings>-->
+<!--							<configOptions>-->
+<!--								<dateLibrary>java8</dateLibrary>-->
+<!--								<openApiNullable>false</openApiNullable>-->
+<!--								<disallowAdditionalPropertiesIfNotPresent>false</disallowAdditionalPropertiesIfNotPresent>-->
+<!--								<groupId>org.wits</groupId>-->
+<!--								<interfaceOnly>true</interfaceOnly>-->
+<!--								<licenseName>Unlicensed</licenseName>-->
+<!--								<singleContentTypes>true</singleContentTypes>-->
+<!--								<title>coindesk-demo</title>-->
+<!--								<unhandledException>true</unhandledException>-->
+<!--								<useTags>true</useTags>-->
+<!--								<useOptional>true</useOptional>-->
+<!--								<skipOverwrite>true</skipOverwrite>-->
+<!--							</configOptions>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 	<repositories>

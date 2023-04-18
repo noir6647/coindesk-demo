@@ -1,24 +1,27 @@
 package org.wits.coindesk.model.dto.generated;
 
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
-
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
+
+import java.util.*;
 import javax.annotation.Generated;
 
 /**
  * CurrencyDTO
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-17T17:16:47.756762500+08:00[Asia/Taipei]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-18T10:45:48.977089100+08:00[Asia/Taipei]")
 public class CurrencyDTO {
 
   @JsonProperty("oid")
-  private Integer oid;
+  private Long oid;
 
   @JsonProperty("code")
   private String code;
@@ -27,12 +30,12 @@ public class CurrencyDTO {
   private String nameCht;
 
   @JsonProperty("createdTimestamp")
-  private BigDecimal createdTimestamp;
+  private Long createdTimestamp;
 
   @JsonProperty("updatedTimestamp")
-  private BigDecimal updatedTimestamp;
+  private Long updatedTimestamp;
 
-  public CurrencyDTO oid(Integer oid) {
+  public CurrencyDTO oid(Long oid) {
     this.oid = oid;
     return this;
   }
@@ -43,11 +46,11 @@ public class CurrencyDTO {
   */
   
   @Schema(name = "oid", required = false)
-  public Integer getOid() {
+  public Long getOid() {
     return oid;
   }
 
-  public void setOid(Integer oid) {
+  public void setOid(Long oid) {
     this.oid = oid;
   }
 
@@ -89,7 +92,7 @@ public class CurrencyDTO {
     this.nameCht = nameCht;
   }
 
-  public CurrencyDTO createdTimestamp(BigDecimal createdTimestamp) {
+  public CurrencyDTO createdTimestamp(Long createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
     return this;
   }
@@ -98,17 +101,17 @@ public class CurrencyDTO {
    * Get createdTimestamp
    * @return createdTimestamp
   */
-  @Valid 
+  
   @Schema(name = "createdTimestamp", required = false)
-  public BigDecimal getCreatedTimestamp() {
+  public Long getCreatedTimestamp() {
     return createdTimestamp;
   }
 
-  public void setCreatedTimestamp(BigDecimal createdTimestamp) {
+  public void setCreatedTimestamp(Long createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
   }
 
-  public CurrencyDTO updatedTimestamp(BigDecimal updatedTimestamp) {
+  public CurrencyDTO updatedTimestamp(Long updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
     return this;
   }
@@ -117,13 +120,13 @@ public class CurrencyDTO {
    * Get updatedTimestamp
    * @return updatedTimestamp
   */
-  @Valid 
+  
   @Schema(name = "updatedTimestamp", required = false)
-  public BigDecimal getUpdatedTimestamp() {
+  public Long getUpdatedTimestamp() {
     return updatedTimestamp;
   }
 
-  public void setUpdatedTimestamp(BigDecimal updatedTimestamp) {
+  public void setUpdatedTimestamp(Long updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
   }
 
