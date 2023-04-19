@@ -18,7 +18,7 @@ public class CurrencyService {
 
     private final CurrencyDAO currencyDAO;
 
-    public void createCurrency(CurrencyCreateRequestDTO currencyCreateRequestDTO){
+    public void createCurrency(CurrencyCreateRequestDTO currencyCreateRequestDTO) {
         CurrencyEntity currencyEntity = new CurrencyEntity();
 
         currencyEntity.setCode(currencyCreateRequestDTO.getCode());
@@ -46,10 +46,10 @@ public class CurrencyService {
         return currencyDTO;
     }
 
-    public CurrencyDTO getCurrency(String code){
+    public CurrencyDTO getCurrency(String code) {
         CurrencyEntity currencyEntity = currencyDAO.findByCode(code).get();
 
-        if(currencyEntity != null){
+        if (currencyEntity != null) {
             return new CurrencyDTO()
                 .oid(currencyEntity.getOid())
                 .code(currencyEntity.getCode())
@@ -61,7 +61,7 @@ public class CurrencyService {
         }
     }
 
-    public List<CurrencyDTO> getAllCurrency(){
+    public List<CurrencyDTO> getAllCurrency() {
 
         List<CurrencyEntity> currencyEntityList = currencyDAO.findAll();
 
@@ -77,7 +77,7 @@ public class CurrencyService {
         return currencyDTOList;
     }
 
-    public void deleteCurrency(String code){
+    public void deleteCurrency(String code) {
         currencyDAO.deleteByCode(code);
     }
 }

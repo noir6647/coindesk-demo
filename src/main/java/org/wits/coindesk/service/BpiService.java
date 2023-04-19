@@ -42,7 +42,8 @@ public class BpiService {
                     .rate(value.get("rate"))
                     .description(value.get("description"))
                     .updatedTimestamp(
-                        LocalDateTime.parse(timeMap.get("updatedISO").toString(), DateTimeFormatter.ISO_OFFSET_DATE_TIME).format(formatter)));
+                        LocalDateTime.parse(timeMap.get("updatedISO").toString(),
+                            DateTimeFormatter.ISO_OFFSET_DATE_TIME).format(formatter)));
         });
 
         return bpiDTOList;

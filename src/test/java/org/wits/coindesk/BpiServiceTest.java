@@ -29,7 +29,8 @@ public class BpiServiceTest {
     @Test
     void testGetBpiInfo() throws Exception {
 
-        when(coindeskManager.callCoindesk()).thenReturn("{'time':{'updated':'Apr 19, 2023 01:17:00 UTC','updatedISO':'2023-04-19T01:17:00+00:00','updateduk':'Apr 19, 2023 at 02:17 BST'},'disclaimer':'openexchangerates.org','chartName':'Bitcoin','bpi':{'USD':{'code':'USD','symbol':'$','rate':'30,280.7661','description':'United States Dollar','rate_float':30280.7661},'GBP':{'code':'GBP','symbol':'£','rate':'25,302.3659','description':'British Pound Sterling','rate_float':25302.3659}}}");
+        when(coindeskManager.callCoindesk()).thenReturn(
+            "{'time':{'updated':'Apr 19, 2023 01:17:00 UTC','updatedISO':'2023-04-19T01:17:00+00:00','updateduk':'Apr 19, 2023 at 02:17 BST'},'disclaimer':'openexchangerates.org','chartName':'Bitcoin','bpi':{'USD':{'code':'USD','symbol':'$','rate':'30,280.7661','description':'United States Dollar','rate_float':30280.7661},'GBP':{'code':'GBP','symbol':'£','rate':'25,302.3659','description':'British Pound Sterling','rate_float':25302.3659}}}");
 
         CurrencyEntity currencyEntity = new CurrencyEntity();
         currencyEntity.setCode("code");

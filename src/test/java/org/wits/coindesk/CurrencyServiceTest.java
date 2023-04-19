@@ -17,7 +17,8 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class CurrencyServiceTest {
@@ -29,7 +30,7 @@ public class CurrencyServiceTest {
     CurrencyDAO currencyDAO;
 
     @Test
-    void testCreateCurrency(){
+    void testCreateCurrency() {
         when(currencyDAO.save(any())).thenReturn(new CurrencyEntity());
 
         CurrencyCreateRequestDTO currencyCreateRequestDTO = new CurrencyCreateRequestDTO();
@@ -51,7 +52,7 @@ public class CurrencyServiceTest {
     }
 
     @Test
-    void testGetCurrency(){
+    void testGetCurrency() {
         CurrencyEntity currencyEntity = new CurrencyEntity();
         when(currencyDAO.findByCode(any())).thenReturn(Optional.of(currencyEntity));
 
@@ -59,7 +60,7 @@ public class CurrencyServiceTest {
     }
 
     @Test
-    void testGetAllCurrency(){
+    void testGetAllCurrency() {
         CurrencyEntity currencyEntity = new CurrencyEntity();
         when(currencyDAO.findAll()).thenReturn(List.of(currencyEntity));
 
@@ -67,7 +68,7 @@ public class CurrencyServiceTest {
     }
 
     @Test
-    void testDeleteCurrency(){
+    void testDeleteCurrency() {
         currencyService.deleteCurrency("code");
         verify(currencyService).deleteCurrency("code");
     }

@@ -42,7 +42,7 @@ public interface CurrencyApi {
      * DELETE /currency/{code} : DELETE CURRENCY
      * delete currency
      *
-     * @param code  (required)
+     * @param code (required)
      * @return OK (status code 200)
      */
     @Operation(
@@ -63,7 +63,6 @@ public interface CurrencyApi {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
-
 
     /**
      * GET /currency/all : GET ALL CURRENCY
@@ -87,10 +86,10 @@ public interface CurrencyApi {
         produces = "application/json"
     )
     default ResponseEntity<List<CurrencyDTO>> getCurrencyAll(
-        
+
     ) throws Exception {
         getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+            for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"code\" : \"code\", \"nameCht\" : \"nameCht\", \"createdTimestamp\" : 6, \"oid\" : 0, \"updatedTimestamp\" : 1 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
@@ -102,12 +101,11 @@ public interface CurrencyApi {
 
     }
 
-
     /**
      * GET /currency/{code} : QUERY CURRENCY
      * query currency
      *
-     * @param code  (required)
+     * @param code (required)
      * @return OK (status code 200)
      */
     @Operation(
@@ -129,7 +127,7 @@ public interface CurrencyApi {
         @Parameter(name = "code", description = "", required = true) @PathVariable("code") String code
     ) throws Exception {
         getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+            for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"code\" : \"code\", \"nameCht\" : \"nameCht\", \"createdTimestamp\" : 6, \"oid\" : 0, \"updatedTimestamp\" : 1 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
@@ -141,13 +139,12 @@ public interface CurrencyApi {
 
     }
 
-
     /**
      * PATCH /currency/{code} : UPDATE CURRENCY
      * update currency
      *
-     * @param code  (required)
-     * @param currencyUpdateRequestDTO  (optional)
+     * @param code                     (required)
+     * @param currencyUpdateRequestDTO (optional)
      * @return OK (status code 200)
      */
     @Operation(
@@ -168,10 +165,11 @@ public interface CurrencyApi {
     )
     default ResponseEntity<CurrencyDTO> patchCurrencyCode(
         @Parameter(name = "code", description = "", required = true) @PathVariable("code") String code,
-        @Parameter(name = "CurrencyUpdateRequestDTO", description = "") @Valid @RequestBody(required = false) CurrencyUpdateRequestDTO currencyUpdateRequestDTO
+        @Parameter(name = "CurrencyUpdateRequestDTO", description = "") @Valid @RequestBody(required = false)
+        CurrencyUpdateRequestDTO currencyUpdateRequestDTO
     ) throws Exception {
         getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+            for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"code\" : \"code\", \"nameCht\" : \"nameCht\", \"createdTimestamp\" : 6, \"oid\" : 0, \"updatedTimestamp\" : 1 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
@@ -183,12 +181,11 @@ public interface CurrencyApi {
 
     }
 
-
     /**
      * POST /currency : ADD CURRENCY
      * add curreny
      *
-     * @param currencyCreateRequestDTO  (optional)
+     * @param currencyCreateRequestDTO (optional)
      * @return OK (status code 200)
      */
     @Operation(
@@ -205,7 +202,8 @@ public interface CurrencyApi {
         consumes = "application/json"
     )
     default ResponseEntity<Void> postCurrency(
-        @Parameter(name = "CurrencyCreateRequestDTO", description = "") @Valid @RequestBody(required = false) CurrencyCreateRequestDTO currencyCreateRequestDTO
+        @Parameter(name = "CurrencyCreateRequestDTO", description = "") @Valid @RequestBody(required = false)
+        CurrencyCreateRequestDTO currencyCreateRequestDTO
     ) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 

@@ -5,7 +5,6 @@
  */
 package org.wits.coindesk.controller.generated;
 
-import org.wits.coindesk.model.dto.generated.CoindeskResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -15,11 +14,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.NativeWebRequest;
+import org.wits.coindesk.model.dto.generated.CoindeskResponseDTO;
 
-import java.util.Optional;
 import javax.annotation.Generated;
+import java.util.Optional;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-17T17:16:47.756762500+08:00[Asia/Taipei]")
 @Validated
@@ -52,10 +53,10 @@ public interface CoindeskApi {
         produces = "application/json"
     )
     default ResponseEntity<CoindeskResponseDTO> getCoindesk(
-        
+
     ) throws Exception {
         getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+            for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"chartName\" : \"chartName\", \"bpi\" : { \"EUR\" : { \"symbol\" : \"symbol\", \"rate_float\" : 0.8008281904610115, \"code\" : \"code\", \"rate\" : \"rate\", \"description\" : \"description\" }, \"GBP\" : { \"symbol\" : \"symbol\", \"rate_float\" : 0.8008281904610115, \"code\" : \"code\", \"rate\" : \"rate\", \"description\" : \"description\" }, \"USD\" : { \"symbol\" : \"symbol\", \"rate_float\" : 0.8008281904610115, \"code\" : \"code\", \"rate\" : \"rate\", \"description\" : \"description\" } }, \"time\" : { \"updateduk\" : \"updateduk\", \"updatedISO\" : \"updatedISO\", \"updated\" : \"updated\" }, \"disclaimer\" : \"disclaimer\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
