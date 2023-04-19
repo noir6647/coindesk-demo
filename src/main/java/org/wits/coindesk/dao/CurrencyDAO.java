@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface CurrencyDAO extends JpaRepository<CurrencyEntity, Integer> {
 
-    Optional<CurrencyEntity> deleteByCode(String code);
+    void deleteByCode(String code);
 
     Optional<CurrencyEntity> findByCode(String code);
 }
